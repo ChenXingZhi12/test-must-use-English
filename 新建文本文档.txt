@@ -1,0 +1,83 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main()
+{
+	int year, mouth, day, num = 0;
+
+	for (year = 1900; year <= 9999; year++)
+	{
+		string y = to_string(year);
+		for (mouth = 1; mouth <= 12; mouth++)
+		{
+			string m = to_string(mouth);
+			if (mouth == 2 && (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)))
+			{
+				for (day = 1; day <= 29; day++)
+				{
+					string d = y + m + to_string(day);
+					for (int i = 0; i < d.size(); i++)
+					{
+						if (d[i] == '2')
+						{
+							num++;
+							break;
+						}
+					}
+				}
+			}
+			if (mouth == 2 && !(year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)))
+			{
+				for (day = 1; day <= 28; day++)
+				{
+					string d = y + m + to_string(day);
+					for (int i = 0; i < d.size(); i++)
+					{
+						if (d[i] == '2')
+						{
+							num++;
+							break;
+						}
+					}
+				}
+			}
+			if (mouth == 1 || mouth == 3 || mouth == 5 || mouth == 7 || mouth == 8 || mouth == 10 || mouth == 12)
+			{
+				for (day = 1; day <= 31; day++)
+				{
+					string d = y + m + to_string(day);
+					for (int i = 0; i < d.size(); i++)
+					{
+						if (d[i] == '2')
+						{
+							num++;
+							break;
+						}
+					}
+				}
+			}
+			if (mouth == 4 || mouth == 6 || mouth == 9 || mouth == 11)
+			{
+				for (day = 1; day <= 30; day++)
+				{
+					string d = y + m + to_string(day);
+					for (int i = 0; i < d.size(); i++)
+					{
+						if (d[i] == '2')
+						{
+							num++;
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	cout << num << endl;
+
+	return 0;
+}
+
+
